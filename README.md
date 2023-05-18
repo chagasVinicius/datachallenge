@@ -1,36 +1,20 @@
-<b>TOTVS Labs - Data Science Challenge</b>
+## Challenge data engineer
+### enviroment
+In order to run the follow instructions make sure that you have installed:
+- [make](https://www.gnu.org/software/make/)
+- [docker](https://docs.docker.com/get-docker/)
+- [docker-compose](https://docs.docker.com/compose/install/)
 
-The purpose of this challenge is to let you demonstrate the way you think and work. The [dataset](https://github.com/totvslabs/datachallenge/raw/master/challenge.zip) we are providing has two tables: 
+### instructions
+In the repository directory run:
 
-1. `orders.json` contains the orders made by customers in one of our applications between '2008-Jan-04' and '2018-July-08'. These customers do not have any contracts or memberships whatsoever with the company and may stop or restart purchasing at will. Here's the description of each column:
-    * `customer_code`: unique id of a customer;
-    * `branch_id`: the branch id where this order was made;
-    * `sales_channel`: the sales channel this order was made;
-    * `seller_code`: seller that made this order;
-    * `register_date`: date of the order;
-    * `total_price`: total price of the order (sum of price of all items);
-    * `order_id`: id of this order. A order is formed by a set of items;
-    * `item_code`: code of the item;
-    * `quantity`: quantity of items (of item_code) bought;
-    * `item_total_price`: total price of items (of item_code), i.e., quantity* unit_price;
-    * `unit_price`: unit price of this item (of item_code);
-    * `group_code`: group this customer belongs;
-    * `segment_code`: segment this customer belongs;
+``` sh
+make load-data // to unzip data and copy to data folder
+docker-compose build
+docker compose up
+```
 
-2. `is_churn.json` contains the 3 columns
-    * `customer_code`: unique id of a customer;
-    * `is_churn`: If the client is a churn on 2018-Aug-01.  
-    * `last_purchase_date`: last purchase date. 
-    
-Notes:
-- The primary key of the orders.json table is: `order_id` + `item_code`.
-- `is_churn` was recorded for all customers on 2018-Aug-01 irrespective of when they actually churned prior to 2018-Aug-01. For example, let us say, Customer1 churns in 2010 and Customer2 churns in 2016. For both customers, the record of `is_churn=1(yes)` was made on 2018-Aug-01. 
+The URL of the correspondent notebook should appears on terminal.
 
-There are many possible use cases for this dataset. For example, product recommendation, churn analysis, sales forecasting, etc.  Pick one use case and build a model for this case. We want to test your skills in data manipulation, cleaning, and predictive modeling. So, please explain all your design and analysis choices. You can use jupyter notebooks for all your exploration and modeling (e.g., EDA, preprocessing, model selection, hyperparameters, evaluation criteria, etc.). You shouldn't spend more than 5 hours to complete the exercise.
+Access `notebooks`> case_totvs_churn.ipynb
 
-You can find the dataset for this challenge in the following url:
-https://github.com/totvslabs/datachallenge/raw/master/challenge.zip
-
-PS: Ideally, we should be able to replicate your analysis from your submitted source-code, so please explicit the versions of the tools and packages you are using.
-
- Please share the zip file of your solution privately OR share your private git repo containing the solution with us.
